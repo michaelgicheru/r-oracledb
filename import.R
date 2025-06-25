@@ -38,9 +38,9 @@ fetch_data <- function(schema = "WORKSPACE") {
 	cursor <- connection$cursor()
 
 	# Fetch Available Tables
-	available_tables <- unlist(cursor$execute(
+	available_tables <- sort(unlist(cursor$execute(
 		"SELECT table_name FROM user_tables"
-	)$fetchall())
+	)$fetchall()))
 
 	schema_id <- menu(
 		available_tables,
